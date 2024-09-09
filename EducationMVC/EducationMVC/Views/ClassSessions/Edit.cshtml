@@ -1,0 +1,59 @@
+﻿@model ClassSessionDto
+
+@{
+    ViewData["Title"] = "Edit Class Session";
+}
+
+<div class="row">
+    <div class="col-md-8 mx-auto rounded border p-3">
+        <h2 class="text-center mb-5">Edit Class Session</h2>
+
+        <form method="post">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Session ID</label>
+                <div class="col-sm-8">
+                    <input class="form-control-plaintext" readonly value="@Model.SessionID">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Course ID</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="CourseID">
+                    <span asp-validation-for="CourseID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Date</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Date" type="date">
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Time</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Time" type="time">
+                    <span asp-validation-for="Time" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Duration (minutes)</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Duration" type="number" min="1">
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-outline-primary" asp-controller="ClassSessions" asp-action="Index" role="button">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

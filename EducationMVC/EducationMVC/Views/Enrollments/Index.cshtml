@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EducationMVC.Models.Enrollment>
+
+<h1>Enrollments</h1>
+
+<form asp-action="Index" method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Search by student or course" value="@ViewData["CurrentFilter"]" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<a asp-action="Create" class="btn btn-primary">Create New Enrollment</a>
+<a asp-action="DownloadCsv" class="btn btn-success mb-3">Download CSV</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Student Name</th>
+            <th>Course Name</th>
+            <th>Enrollment Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var enrollment in Model)
+        {
+            <tr>
+                <td>@enrollment.Id</td>
+                <td>@enrollment.Student?.Name</td>
+                <td>@enrollment.Course?.CourseName</td>
+                <td>@enrollment.EnrollmentDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@enrollment.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@enrollment.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

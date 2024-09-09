@@ -1,0 +1,50 @@
+﻿@model List<EducationMVC.Models.Teacher>
+
+<h2 class="text-center mb-5">List of Teachers</h2>
+
+<!-- Search form -->
+<form asp-action="Index" method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Search by name or subject...">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<div class="row mb-5">
+    <div class="col">
+        <a class="btn btn-primary" asp-controller="Teachers" asp-action="Create">New Teacher</a>
+    </div>
+    <div class="col">
+        <a href="@Url.Action("DownloadCsv", "Teachers")" class="btn btn-primary">Download CSV</a>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-primary">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Image</th>
+            <th>Joined</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var teacher in Model)
+        {
+            <tr>
+                <td>@teacher.Id</td>
+                <td>@teacher.Name</td>
+                <td>@teacher.Subject</td>
+                <td><img src="/teachers/@teacher.ImageFileName" width="100" /></td>
+                <td>@teacher.JoinDate.ToString("MM/dd/yyyy")</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" asp-controller="Teachers" asp-action="Edit" asp-route-id="@teacher.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Teachers" asp-action="Delete" asp-route-id="@teacher.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

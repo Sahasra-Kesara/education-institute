@@ -1,0 +1,44 @@
+﻿@model IEnumerable<EducationMVC.Models.Payment>
+
+<h1>Payments</h1>
+
+<form asp-action="Index" method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Search by student or course" value="@ViewData["CurrentFilter"]" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<a asp-action="Create" class="btn btn-primary">Create New Payment</a>
+<a href="@Url.Action("DownloadCsv", "Payments")" class="btn btn-primary">Download CSV</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Student Name</th>
+            <th>Course Name</th>
+            <th>Amount</th>
+            <th>Payment Date</th>
+            <th>Payment Method</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var payment in Model)
+        {
+            <tr>
+                <td>@payment.Id</td>
+                <td>@payment.Student?.Name</td>
+                <td>@payment.Course?.CourseName</td>
+                <td>@payment.Amount.ToString("C")</td>
+                <td>@payment.PaymentDate.ToString("yyyy-MM-dd")</td>
+                <td>@payment.PaymentMethod</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@payment.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@payment.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

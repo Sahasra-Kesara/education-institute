@@ -1,0 +1,23 @@
+﻿@model EnrollmentDto
+
+<h2>Edit Enrollment</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="StudentId"></label>
+        <select asp-for="StudentId" asp-items="@(ViewData["Students"] as SelectList)" class="form-control"></select>
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CourseId"></label>
+        <select asp-for="CourseId" asp-items="@(ViewData["Courses"] as SelectList)" class="form-control"></select>
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EnrollmentDate"></label>
+        <input asp-for="EnrollmentDate" class="form-control" type="date" />
+        <span asp-validation-for="EnrollmentDate" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

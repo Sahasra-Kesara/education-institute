@@ -1,0 +1,55 @@
+﻿@model List<ClassSession>
+
+@{
+    ViewData["Title"] = "List of Class Sessions";
+}
+
+<h2 class="text-center mb-5">List of Class Sessions</h2>
+
+<!-- Search form -->
+<form asp-action="Index" method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Search by session ID or course ID...">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<div class="row mb-5">
+    <div class="col">
+        <a class="btn btn-primary" asp-controller="ClassSessions" asp-action="Create">New Class Session</a>
+    </div>
+    <div class="col">
+        <a href="@Url.Action("DownloadCsv", "ClassSessions")" class="btn btn-primary">Download CSV</a>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-primary">
+        <tr>
+            <th>Session ID</th>
+            <th>Course ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Duration (minutes)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var session in Model)
+        {
+            <tr>
+                <td>@session.SessionID</td>
+                <td>@session.CourseID</td>
+                <td>@session.Date.ToString("MM/dd/yyyy")</td>
+                <td>@session.Time.ToString(@"hh\:mm\:ss")</td>
+                <td>@session.Duration</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" asp-controller="ClassSessions" asp-action="Edit"
+                       asp-route-id="@session.SessionID">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="ClassSessions" asp-action="Delete"
+                       asp-route-id="@session.SessionID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
