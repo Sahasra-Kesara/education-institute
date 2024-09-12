@@ -134,3 +134,4 @@ D:\StackNet Projects\Education\EducationMVC\EducationMVC\obj\Debug\net8.0\refint
 D:\StackNet Projects\Education\EducationMVC\EducationMVC\obj\Debug\net8.0\EducationMVC.pdb
 D:\StackNet Projects\Education\EducationMVC\EducationMVC\obj\Debug\net8.0\EducationMVC.genruntimeconfig.cache
 D:\StackNet Projects\Education\EducationMVC\EducationMVC\obj\Debug\net8.0\ref\EducationMVC.dll
+D:\StackNet Projects\Education\EducationMVC\EducationMVC\obj\Debug\net8.0\EducationMVC.sourcelink.json

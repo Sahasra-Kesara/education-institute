@@ -4,6 +4,8 @@ namespace EducationMVC.Models
 {
     public class Student
     {
+        internal object Subject;
+
         public int Id { get; set; }
 
         [MaxLength(100)]
