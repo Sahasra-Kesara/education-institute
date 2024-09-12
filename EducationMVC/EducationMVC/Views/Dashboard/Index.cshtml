@@ -1,0 +1,67 @@
+﻿@model EducationMVC.Controllers.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Number of Teachers</h5>
+                    <p class="card-text">@Model.NumberOfTeachers</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Number of Students</h5>
+                    <p class="card-text">@Model.NumberOfStudents</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Number of Courses</h5>
+                    <p class="card-text">@Model.NumberOfCourses</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Number of Class Sessions</h5>
+                    <p class="card-text">@Model.NumberOfClassSessions</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Number of Enrollments</h5>
+                    <p class="card-text">@Model.NumberOfEnrollments</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Payment Amount</h5>
+                    <p class="card-text">@Model.TotalPayments.ToString("C")</p> <!-- Display currency format -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
